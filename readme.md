@@ -28,7 +28,7 @@ Here's how to get started with this query builder:
 
         import (
             "fmt"
-            "github.com/yourusername/map-struct"
+            "github.com/b0a04gl/map-struct"
         )
 
             type Person struct {
@@ -40,9 +40,9 @@ Here's how to get started with this query builder:
             func main() {
                 // Example data to be mapped
                 data := map[string]interface{}{
-                "Name":    "John Doe",
-                "Age":     30,
-                "Address": "123 Main St",
+                "Name":    "Tommy Shelby",
+                "Age":     34,
+                "Address": "441, Baking street, Buckingham",
                 }
 
             // Create an instance of the target struct
