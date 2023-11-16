@@ -70,4 +70,36 @@ func TestMapToStruct(t *testing.T) {
 	}
 }
 
+func TestValidateTarget(t *testing.T) {
+	tests := []struct {
+		name    string
+		target  interface{}
+		wantErr bool
+	}{
+		{
+			name:    "ValidTarget",
+			target:  &Person{},
+			wantErr: false,
+		},
+		{
+			name:    "InvalidTarget",
+			target:  nil,
+			wantErr: true,
+		},
+		{
+			name:    "NonPointerTarget",
+			target:  Person{}, 
+			wantErr: true,
+		},
+	}
 
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			err := validateTarget(reflect.ValueOf(tt.target))
+
+			if (err != nil) != tt.wantErr {
+				t.Errorf("validateTarget() error = %v, wantErr %v", err, tt.wantErr)
+			}
+		})
+	}
+}
